@@ -5,8 +5,6 @@ from wsgiref.simple_server import make_server
 from wsgiref.util import request_uri
 import sqlite3
 
-
-
 def serve_home(query):
     conn = sqlite3.connect('test1.db')
     ret=conn.execute("SELECT * from MAIL ORDER BY id DESC LIMIT 1")
@@ -20,9 +18,6 @@ def handler404(start_response):
                         ("Content-Length", str(len(response_body)))]
     start_response(status, response_headers)
     return response_body
-
-
-
 
 def application(environ, start_response):
     # get request path and request params
